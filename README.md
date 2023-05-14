@@ -35,6 +35,7 @@ samples, guidance on mobile development, and a full API reference.
 - 45K: https://youtu.be/Wo0o0wSkn4k
 - 10K: https://youtu.be/mgHrIV1Qgmc
 - 58K: https://youtu.be/LyAwnwvbBKM
+- 18K: https://youtu.be/SyDo0GqBVYU
 - 10K: https://youtu.be/TfJQP4FM47k
 - https://pub.dev/packages/webview_flutter
 - https://codelabs.developers.google.com/codelabs/flutter-webview
@@ -56,7 +57,34 @@ samples, guidance on mobile development, and a full API reference.
 
 **Problems from Videos**
 
-- 
+- Question: How to solve error 'net::ERR_CACHE_MISS' in production mode?
+
+Answer:  Follow
+this [link](https://stackoverflow.com/questions/60829199/flutter-webviews-gives-neterr-cache-miss-message)
+
+- Question: Error 'ERR_CONNECTION_REFUSED'
+
+Answer: Follow
+this [link](https://stackoverflow.com/questions/55785581/socketexception-os-error-connection-refused-errno-111-in-flutter-using-djan)
+
+- Question: How to get push notifications with webview?
+
+Answer: Follow this [link](https://github.com/bobanminic96/push_notifications)
+
+- Question: How to enable full video landscape in webview?
+
+Answer: Follow
+this [link](https://stackoverflow.com/questions/64290230/flutter-webview-video-player-not-auto-rotating-as-observe-in-android-chrome)
+
+- Question: is there any way to use read-mode in webview?
+
+Answer: Follow
+this [link](https://stackoverflow.com/questions/62471299/reader-mode-for-webview-in-flutter)
+
+- Question: How to implement autofill fields?
+
+Answer: Follow
+this [link](https://medium.com/swlh/how-to-implement-autofill-in-your-flutter-app-b43bddab1a97)
 
 **Problems from Flutter Stackoverflow**
 

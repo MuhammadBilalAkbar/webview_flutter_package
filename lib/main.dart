@@ -9,11 +9,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
+        title: 'WebView Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              textStyle: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+              minimumSize: const Size(200, 50),
+            ),
+          ),
         ),
-        home: const HomePage(title: 'Flutter Demo Home Page'),
+        home: const HomePage(title: 'WebView Flutter Demo'),
       );
 }

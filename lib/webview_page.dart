@@ -8,36 +8,40 @@ class WebViewPage extends StatefulWidget {
   State<WebViewPage> createState() => WebViewPageState();
 }
 
-WebViewController webViewController = WebViewController()
-  ..setJavaScriptMode(JavaScriptMode.unrestricted)
-  ..setBackgroundColor(Colors.white)
-  ..setNavigationDelegate(
-    NavigationDelegate(
-      onProgress: (progress) {
-        debugPrint('WebView is loading (progress : $progress%)');
-      },
-      onPageStarted: (url) {
-        debugPrint('Page started loading: $url');
-      },
-      onPageFinished: (String url) {
-        debugPrint('Page finished loading: $url');
-      },
-      onWebResourceError: (WebResourceError error) {
-        debugPrint('Page resource error code: ${error.errorCode}');
-      },
-      onNavigationRequest: (NavigationRequest request) {
-        if (request.url.startsWith('https://flutter.dev/')) {
-          debugPrint('blocking navigation to ${request.url}');
-          return NavigationDecision.prevent;
-        }
-        return NavigationDecision.navigate;
-      },
-      onUrlChange: (UrlChange change) {
-        debugPrint('url change to ${change.url}');
-      },
-    ),
-  )
-  ..loadRequest(Uri.parse('https://www.google.com'));
+final webViewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(Colors.white)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (url) => debugPrint('Page started loading: $url'),
+          onPageFinished: (url) => debugPrint('Page finished loading: $url'),
+          onUrlChange: (change) => debugPrint('url changed to ${change.url}'),
+          onProgress: (progress) =>
+              debugPrint('WebView is loading (progress : $progress%)'),
+          onWebResourceError: (error) =>
+              debugPrint('Page resource error code: ${error.errorCode}'),
+          onNavigationRequest: (request) {
+            if (request.url.startsWith('https://flutter.dev/')) {
+              debugPrint('blocking navigation to ${request.url}');
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse('https://www.amazon.com'))
+
+..runJavaScript(
+    "document.getElementsByTagName('header')[0].style.display='none'"
+
+// '''
+//       var header = document.querySelector('header');
+//       if (header) {
+//         header.remove();
+//       }
+// '''
+)
+    ;
 
 class WebViewPageState extends State<WebViewPage> {
   @override
@@ -60,6 +64,15 @@ class WebViewPageState extends State<WebViewPage> {
                 controller: webViewController,
               ),
             ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              webViewController
+                  .loadRequest(Uri.parse('https://www.youtube.com'));
+              // webViewController.runJavaScript(
+              //     "document.getElementsByTagName('')[0].style.display='none'");
+            },
+            child: const Icon(Icons.import_export, size: 32),
           ),
         ),
       );
