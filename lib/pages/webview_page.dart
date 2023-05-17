@@ -21,7 +21,7 @@ final webViewController = WebViewController()
       onWebResourceError: (error) =>
           debugPrint('Page resource error code: ${error.errorCode}'),
       onNavigationRequest: (request) {
-        if (request.url.startsWith('https://flutter.dev/')) {
+        if (request.url.startsWith('https://www.facebook.com')) {
           debugPrint('blocking navigation to ${request.url}');
           return NavigationDecision.prevent;
         }
@@ -29,9 +29,7 @@ final webViewController = WebViewController()
       },
     ),
   )
-  ..loadRequest(Uri.parse('https://www.amazon.com'))
-  ..runJavaScript(
-      "document.getElementsByTagName('header')[0].style.display='none'");
+  ..loadRequest(Uri.parse('https://heyflutter.com'));
 
 class WebViewPageState extends State<WebViewPage> {
   @override
@@ -48,19 +46,10 @@ class WebViewPageState extends State<WebViewPage> {
           appBar: AppBar(
             title: const Text('WebView Page'),
           ),
-          body: Stack(
-            children: [
-              WebViewWidget(
-                controller: webViewController,
-              ),
-            ],
-          ),
+          body: WebViewWidget(controller: webViewController),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              webViewController.loadRequest(
-                Uri.parse('https://www.youtube.com'),
-              );
-            },
+            onPressed: () => webViewController
+                .loadRequest(Uri.parse('https://www.youtube.com')),
             child: const Icon(Icons.import_export, size: 32),
           ),
         ),

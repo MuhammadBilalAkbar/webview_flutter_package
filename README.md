@@ -18,8 +18,29 @@ samples, guidance on mobile development, and a full API reference.
 ## 1. Research: Webview Flutter Package
 
 - Keywords:
-    - _[Add here a list of important keywords about the topic]_
-- Video Title: _[title for the video that contains high ranking keywords]_
+    - WebView flutter package
+    - webview flutter example
+    - flutter webview-example github
+    - flutter webview-example github
+    - flutter webview web
+    - flutter webview full screen
+    - flutter webview pro
+    - Webview flutter example github
+    - inappwebview flutter example
+    - flutter webview source code
+    - webviewcontroller flutter
+    - in-app webview flutter
+    - flutter webview windows
+    - flutter webview example 2023
+    - flutter open url in webview
+    - flutter webview-example github
+    - flutter webview web example
+    - flutter webview web tutorial
+    - flutter inappwebview
+    - flutter webview full screen
+    - webview in flutter app
+- Video Title: WebView Flutter Package | In-app WebView with full screen in Flutter | Convert
+  website into app
 
 ## 2. Research: Competitors
 
@@ -48,12 +69,37 @@ samples, guidance on mobile development, and a full API reference.
 
 **Android/Swift/React Videos**
 
--
+- 23K: https://youtu.be/JlmIf8mo-O8
+- 332K: https://youtu.be/TUXui5ItBkM
+- 78K: https://youtu.be/6U8-_G5yjwA
+- 1.9K: https://youtu.be/EkKdQ6gVzao
+- 15K: https://youtu.be/GaXgDy0rRv8
+- 61K: https://youtu.be/JafGypqFvs4
+- 2.2K: https://youtu.be/Ntkt06bD698
+- 10K: https://youtu.be/GyWeDBkatlc
+- 3.4K: https://youtu.be/d5fMOEodxc4
+- 31K: https://youtu.be/0lN0RnOWTlI
+- 20K: https://youtu.be/yiZZeK-y6cI
+- https://developer.android.com/develop/ui/views/layout/webapps/webview
+- https://www.tutorialspoint.com/android/android_webview_layout.htm
+- https://abhiandroid.com/ui/webview
+- https://www.geeksforgeeks.org/how-to-use-webview-in-android/
+- https://developer.apple.com/documentation/webkit/wkwebview
+- https://www.hackingwithswift.com/read/4/2/creating-a-simple-browser-with-wkwebview
+- https://www.tutorialspoint.com/how-to-create-a-webview-in-an-ios-app-using-swift
+- https://www.javatpoint.com/ios-webview
+- https://reactnative.dev/docs/0.61/webview
+- https://www.npmjs.com/package/react-native-webview
+- https://blog.logrocket.com/react-native-webview-a-complete-guide/
+- https://docs.expo.dev/versions/latest/sdk/webview
+- https://www.tutorialspoint.com/react_native/react_native_webview.htm
+- https://www.javatpoint.com/react-native-webview
 
 **Great Features**
 
-- _[Add here the great features & things that are showcased well from the videos above, if it is about UI you could also attach screenshots]_
-- _..._
+- This plugin provides a WebView widget on Android and iOS.
+- Find more features
+  at [https://pub.dev/packages/webview_flutter](https://pub.dev/packages/webview_flutter).
 
 **Problems from Videos**
 
@@ -88,26 +134,112 @@ this [link](https://medium.com/swlh/how-to-implement-autofill-in-your-flutter-ap
 
 **Problems from Flutter Stackoverflow**
 
-- _[Add here any links to problems people face with this topic ...]_
-- _[Add stackoverflow links "Flutter [Your Topic] not working" etc. ...]_
+- https://stackoverflow.com/questions/74847502/why-cant-i-use-webview-in-flutter-dart
+- https://stackoverflow.com/questions/75823597/an-issue-with-flutter-webview-widget
+- https://stackoverflow.com/questions/72386529/getting-error-while-implementing-web-view-in-flutter-applications
+- https://stackoverflow.com/questions/75782448/flutter-issue-in-webview-method-flutter
 
 ## 3. Video Structure
 
 **Main Points / Purpose Of Lesson**
 
-1. _[Why is it useful for the viewer to learn more about what we teach in this video lesson?]_
-2. _[What are the main points of this video lesson]_
-    - _[Add here multiple main points ...]_
-    - _[...]_
-3. _[Out of 1. & 2. create 2-3 sentences that could be later used for recording the introduction of this video lesson]_
+1. In this video lesson, you will learn how to convert website into app using webview flutter
+   package.
+2. WebViewController is the main thing in webview flutter package. Through this following methods
+   can be used:
+    - setJavaScriptMode
+    - loadRequest
+    - setBackgroundColor
+    - setNavigationDelegate
+3. HTML, CSS, and Javascript code can also be run through webview controller.
 
 **The Structured Main Content**
 
-1. _[Add here the main topics the video project is covering in chronological order. For each topic add the main points how this lesson can be taught step by step to beginners who never did anything related to what this lesson is about]_
-2. _[e.g. for this video project: https://www.youtube.com/watch?v=MSv38jO4EJk]_
-    - _[1. Setup Android & iOS]_
-        - _[Add for each topic more detailed steps ...]_
-        - _[...]_
-    - _[2. Pick Image From Gallery]_
-    - _[3. Pick Image From Camera]_
-    - _[4. Persist Images To Local Storage]_
+1. Run `dart pub add webivew_flutter` package in terminal to add webview_flutter package in your
+   project's pubspec.yaml file.
+2. `main.dart` file contains theming properties. `home` property of `MaterialApp` is calling
+   HomePage from `home_page.dart`
+3. `home_page.dart` contains one elevated button. By clicking on that button, `WebViewPage`
+   from `webview_page.dart` is opened.
+4. `webview_page.dart` file contains WebView widget that converts any website into app using this
+   package.
+    - First, initialize `webViewController`:
+
+```dart
+
+final webViewController = WebViewController()
+  ..setJavaScriptMode(JavaScriptMode.unrestricted)
+  ..setBackgroundColor(Colors.white)
+  ..setNavigationDelegate(
+    NavigationDelegate(
+      onPageStarted: (url) => debugPrint('Page started loading: $url'),
+      onPageFinished: (url) => debugPrint('Page finished loading: $url'),
+      onUrlChange: (change) => debugPrint('url changed to ${change.url}'),
+      onProgress: (progress) =>
+          debugPrint('WebView is loading (progress : $progress%)'),
+      onWebResourceError: (error) =>
+          debugPrint('Page resource error code: ${error.errorCode}'),
+      onNavigationRequest: (request) {
+        if (request.url.startsWith('https://www.facebook.com')) {
+          debugPrint('blocking navigation to ${request.url}');
+          return NavigationDecision.prevent;
+        }
+        return NavigationDecision.navigate;
+      },
+    ),
+  )
+  ..loadRequest(Uri.parse('https://heyflutter.com'));   
+```
+
+- Double dots make a sequence of operations on the same object which is WebViewController here.
+- `setJavaScriptMode` sets the JavaScript execution mode to be used by the WebView.
+- `setBackgroundColor` sets the current background color of this view.
+- `setNavigationDelegate` uses `NavigationDelegate` widget containing the callback methods that are
+  called during navigation events.
+- `loadRequest` loads new request with the provided url.
+- `NavigationDelegate` has following properties:
+    - `onPageStarted` is called when new url starts loading.
+    - `onPageFinished` is called when old url is finished and new url starts loading.
+    - `onProgress` is called when new url starts loading, it shows percentage.
+    - `onWebResourceError` is called when web view has error.
+    - `onNavigationRequest` is called when navigation changes.
+    - `onUrlChange` is called when web view changes to a new url.
+
+      ![screenshot](NavigationDelegate.png)
+
+- Body of `webview_page.dart` is following:
+
+```dart
+class WebViewPageState extends State<WebViewPage> {
+  @override
+  Widget build(BuildContext context) =>
+      WillPopScope(
+        onWillPop: () async {
+          if (await webViewController.canGoBack()) {
+            webViewController.goBack();
+            return false;
+          } else {
+            return true;
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('WebView Page'),
+          ),
+          body: WebViewWidget(controller: webViewController),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () =>
+                webViewController
+                    .loadRequest(Uri.parse('https://www.youtube.com')),
+            child: const Icon(Icons.import_export, size: 32),
+          ),
+        ),
+      );
+}
+```
+
+- `FloatingActionButton` is used to loadRequest (change webView url) from heyflutter.com to
+  youtube.com.
+- `WillPopScope` is used to control the back navigation button of android. If we can go back in url
+  where are `webViewController.canGoBack()` then it will go back `webViewController.goBack()` and
+  return false otherwise it will return true.
