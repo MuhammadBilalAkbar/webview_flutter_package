@@ -8,11 +8,12 @@ class WebViewPage extends StatefulWidget {
   State<WebViewPage> createState() => WebViewPageState();
 }
 
-late final WebViewController webViewController;
+WebViewController webViewController = WebViewController();
 
 class WebViewPageState extends State<WebViewPage> {
   @override
   void initState() {
+    super.initState();
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.white)
@@ -35,7 +36,12 @@ class WebViewPageState extends State<WebViewPage> {
         ),
       )
       ..loadRequest(Uri.parse('https://heyflutter.com'));
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    webViewController.loadRequest(Uri.parse('about:blank'));
+    super.dispose();
   }
 
   @override
